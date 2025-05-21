@@ -7,23 +7,68 @@ url = "/"
 weight = 1
 
 [[main]]
+name = "Blog"
+url = "/blog"
+weight = 2
+
+[[main]]
+weight = 3
+name = "Notes"
+
+[[main]]
+parent = "Notes"
+name = "HTML5"
+url = "/note/HTML5"
+weight = 1
+
+[[main]]
+parent = "Notes"
+name = "CSS3"
+url = "/note/CSS3"
+weight = 2
+
+[[main]]
+parent = "Notes"
+name = "javascript"
+url = "/note/javascript"
+weight = 3
+
+[[main]]
+parent = "Notes"
+name = "golang"
+url = "/note/golang"
+weight = 4
+
+[[main]]
+parent = "Notes"
+name = "blockchain"
+url = "/note/blockchain"
+weight = 5
+
+[[main]]
+parent = "Notes"
+name = "solidity"
+url = "/note/solidity"
+weight = 6
+
+[[main]]
 name = "关于"
 url = "/about"
-weight = 2
+weight = 4
 
 [[main]]
 name = "元素"
 url = "/elements"
-weight = 3
+weight = 4
 
 [[main]]
 weight = 4
-name = "页面"
+name = "Pages"
 
-[[main]]
-parent = "Pages"
-name = "Blog"
-url = "/blog"
+#[[main]]
+#parent = "Pages"
+#name = "Blog"
+#url = "/blog"
 
 [[main]]
 parent = "Pages"
