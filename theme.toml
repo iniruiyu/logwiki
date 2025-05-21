@@ -29,10 +29,10 @@ features = [
 ]
 
 [author]
-name = "Zeon Studio"
-homepage = "https://zeon.studio"
+name = "Log Wiki"
+homepage = "https://log.wiki"
 
 [original]
-author = "Zeon Studio"
-homepage = "https://zeon.studio"
-repo = "https://github.com/zeon-studio/themeplate"
+author = "Log Wiki"
+homepage = "https://log.wiki"
+repo = "https://github.com/iniruiyu/logwiki"
