@@ -1,5 +1,5 @@
 ---
-title: "HTML5 笔记"
+title: "JAVASCRIPT 笔记"
 meta_title: ""
 description: "this is meta description"
 ---
