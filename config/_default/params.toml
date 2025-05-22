@@ -11,7 +11,7 @@ logo_height = "32px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
-logo_text = "Hugoplate"
+logo_text = "log"
 # navbar fixed to top
 navbar_fixed = true
 # theme-mode
@@ -46,7 +46,8 @@ preloader = "" # use jpg, png, svg or gif format.
 [search]
 enable = true
 primary_color = "#121212"
-include_sections = ["blog"]
+# include_sections = ["blog"]
+include_all_sections = true
 show_image = true
 show_description = true
 show_tags = true
