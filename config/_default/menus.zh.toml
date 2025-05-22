@@ -57,38 +57,48 @@ url = "/about"
 weight = 7
 
 [[main]]
-name = "元素"
-url = "/elements"
+name = "分类"
+url = "/categories"
 weight = 8
 
 [[main]]
+name = "书签"
+url = "/links"
 weight = 9
-name = "Pages"
+
+#[[main]]
+#name = "元素"
+#url = "/elements"
+#weight = 8
+
+#[[main]]
+#weight = 9
+#name = "Pages"
 
 #[[main]]
 #parent = "Pages"
 #name = "Blog"
 #url = "/blog"
 
-[[main]]
-parent = "Pages"
-name = "Contact"
-url = "/contact"
+#[[main]]
+#parent = "Pages"
+#name = "Contact"
+#url = "/contact"
 
-[[main]]
-parent = "Pages"
-name = "Authors"
-url = "/authors"
+#[[main]]
+#parent = "Pages"
+#name = "Authors"
+#url = "/authors"
 
-[[main]]
-parent = "Pages"
-name = "Categories"
-url = "/categories"
+#[[main]]
+#parent = "Pages"
+#name = "Categories"
+#url = "/categories"
 
-[[main]]
-parent = "Pages"
-name = "404 Page"
-url = "/404"
+#[[main]]
+#parent = "Pages"
+#name = "404 Page"
+#url = "/404"
 
 
 # footer menu
@@ -97,12 +107,12 @@ name = "关于"
 url = "/about"
 weight = 1
 
-[[footer]]
-name = "元素"
-url = "/elements"
-weight = 2
+#[[footer]]
+#name = "元素"
+#url = "/elements"
+#weight = 2
 
-[[footer]]
-name = "Privacy Policy"
-url = "/privacy-policy"
-weight = 3
+#[[footer]]
+#name = "Privacy Policy"
+#url = "/privacy-policy"
+#weight = 3
