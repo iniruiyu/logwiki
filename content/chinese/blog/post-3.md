@@ -3,7 +3,7 @@ title: "标题在这个地方写"
 meta_title: ""
 description: "posts 文章的介绍"
 date: 2025-05-21T05:00:00Z
-image: "/images/image-placeholder.png"
+image: "/images/gallery/03.jpg"
 categories: ["hugo", "markdown"]
 author: "ruiyu"
 tags: ["hugo", "markdown"]
