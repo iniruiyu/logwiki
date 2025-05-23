@@ -14,6 +14,11 @@ draft: false
 
 # 一、基础标签
 
+* h1,h2,h3,h4,h5,
+* p
+* span
+* div
+
 ## 1.img
 
 ```html
@@ -1318,11 +1323,11 @@ base标签就是专门用来统一的指定当前网页中所有的超链接(a�
 <hr>
 
 * 设置滚动类型
-
-    * ```html
-  <marquee behavior="slide">滚动到边界停止</marquee>
-  <marquee behavior="alternate">在区间重复滚动</marquee>
-  
+  * ```html
+    <marquee behavior="slide">滚动到边界停止</marquee>
+    <marquee behavior="alternate">在区间重复滚动</marquee>
+    ```
+  * 
   *  <marquee behavior="slide">滚动到边界停止</marquee>
      <marquee behavior="alternate">在区间重复滚动</marquee>
   

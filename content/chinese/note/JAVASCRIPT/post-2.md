@@ -12,7 +12,7 @@ draft: false
 
 
 
-# vue3
+# vue
 
 # 1. 什么是 Vue？
 
@@ -25,7 +25,7 @@ draft: false
 - **声明式渲染**：Vue 基于标准 HTML 拓展了一套模板语法，使得我们可以声明式地描述最终输出的 HTML 和 JavaScript 状态之间的关系。
 - **响应性**：Vue 会自动跟踪 JavaScript 状态并在其发生变化时响应式地更新 DOM。
 
-## 渐进式框架
+## 1.2 渐进式框架
 
 Vue 是一个框架，也是一个生态。其功能覆盖了大部分前端开发常见的需求。但 Web 世界是十分多样化的，不同的开发者在 Web 上构建的东西可能在形式和规模上会有很大的不同。考虑到这一点，Vue 的设计非常注重灵活性和“可以被逐步集成”这个特点。根据你的需求场景，你可以用不同的方式使用 Vue：
 
@@ -36,52 +36,43 @@ Vue 是一个框架，也是一个生态。其功能覆盖了大部分前端开�
 - Jamstack / 静态站点生成 (SSG)
 - 开发桌面端、移动端、WebGL，甚至是命令行终端中的界面
 
-# 2. Vue的应用
+# 2. Vue 的组件风格书写
 
-```html
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-<body>
-<div id="app">
+Vue 的组件可以按两种不同的风格书写
 
-    <p>{{num}}</p>
-    <p>{{uname}}</p>
-</div>
-<script>
-    const Counter = {
-        //配置对象
-        data:function(){
-            return{
-                num:0,
-                uname:"张三"
-            }
-        }
-    }
-    let app = Vue.createApp(Counter).mount('#app')//创建应用，将配置对象传入;
-    //mount 挂载
-    console.log(app);
-    //app.num = 3 ,HTML页面上的num也会随之修改
-    //这叫做双向绑定
+- 选项式 API 
+- 组合式 API
 
-</script>
+## 2.1 选项式 API
 
-</body>
-</html>
+- 使用选项式 API，我们可以用包含多个选项的对象来描述组件的逻辑，例如`data`、`methods`和 `mounted`
+- 选项所定义的属性都会暴露在函数内部的`this`上，它会指向当前的组件实例
+
+
+
+## 2.2 组合式 API 
+
+- 通过组合式 API，我们可以使用导入的 API 函数来描述组件逻辑
+- 在单文件组件中，组合式 API 通常会与`<script setup>`搭配使用
+- 这个`setup`属性是一个标识，告诉 Vue 需要在编译时进行一些处理，让我们可以更简洁地使用组合式 API
+- `<script setup>`中的导入和顶层变量/函数都能够在模板中直接使用
+
+
+
+## 2.3 双向绑定原理
+
+* MVVM 指的是**Model**、**View**和**ViewModel**
+  - Model：页面渲染用到的数据源
+  - View：页面所渲染的 DOM 结构
+  - ViewModel：表示 vue 的实例
+
+```mermaid
+graph LR
+View--监听BOM变化自动更新---ViewModle--监听数据源变化自动同步---Modle
 ```
 
-## 2.1 双向绑定
-
-
-
-## 2.2 mount 挂载
-
-
+* 当数据源发生变化时，会被 VM 监听到，VM 会根据最新的数据源自动更新页面的结构 
+* 当表单元素的值发生变化时，也会被 VM 监听到，VM 会把变化过后最新的值自动同步到 Model 数据源中
 
 
 
@@ -89,22 +80,305 @@ Vue 是一个框架，也是一个生态。其功能覆盖了大部分前端开�
 
 ## 3.1 运行环境vite
 
+1. 安装并执行 create-vue：`npm init vue@latest`
 
+2. 选择项目功能
+   ```bash
+   ✔ Project name: … <your-project-name> 
+   ✔ Add TypeScript? … No / Yes 
+   ✔ Add JSX Support? … No / Yes 
+   ✔ Add Vue Router for Single Page Application development? … No / Yes 
+   ✔ Add Pinia for state management? … No / Yes 
+   ✔ Add Vitest for Unit testing? … No / Yes 
+   ✔ Add Cypress for both Unit and End-to-End testing? … No / Yes 
+   ✔ Add ESLint for code quality? … No / Yes 
+   ✔ Add Prettier for code formatting? … No / Yes 
+   
+   Scaffolding project in ./<your-project-name>... 
+   Done.
+   ```
 
-```powershell
-  npm init vite@latest vue-begin01
-  //npm init vite@latest vue-day01 -- --template vue
-  cd vue-begin01
-  npm install
-  npm run dev 
+3. 切换到项目目录：`cd <your-project-name>`
+
+4. 安装项目依赖：`npm install`
+
+5. 启动开发服务器：`npm run dev`
+
+6. 将应用发布到生产环境：`npm run build`
+
+## 3.2 vue 项目的运行流程
+
+* main.js
+
+```js
+// 从 vue 中引入 createApp 函数 
+import {createApp} from 'vue' 
+
+// 导入根组件 APP.vue 
+import App from './App.vue'
+
+// 通过 createApp 函数创建应用实例 
+// 通过 mount 函数，将应用实例渲染在容器元素里面 
+createApp(App).mount('#app')
+```
+
+* `App.vue`：用来编写待渲染的模板结构，也成为根组件
+* `index.html`：单页面程序唯一的界面文件
+* `main.js`：项目的主入口文件，把 App.vue 渲染到了 index.html 中
+
+### 3.3 每个 .vue 组件都由三部分构成
+
+* 分别是：
+
+  - `template`：组件的模板结构 -- 视图
+    * template 是容器标签，只起到包裹性质的作用，它不会被渲染为真正的 DOM 元素
+
+  - `script`：组件的 JavaScript 行为 -- vue 实例
+
+  - `style`：组件的样式 -- css 样式
+
+### 3.4 举例演示MVVM
+
+#### 3.4.1 选项式
+
+```vue
+<!-- 脚本区域 -->
+<script>
+    // vue 实例对象（viewModel）
+    export default {
+        // 数据源存放到 data 节点中（model）
+        data: () => ({
+            account: 'Abc'
+        }),
+        // 方法节点
+        methods: {
+            changeAccount() {
+                this.account += "="
+            }
+        }
+    }
+</script>
+
+<!-- 视图区域（view） -->
+<template>
+    <!-- 使用数据源得 DOM -->
+    <input type="text" v-model="account">
+    <button @click="changeAccount">点我打印数据源 account</button>
+</template>
+```
+
+#### 3.4.2 组合式
+
+```vue
+<!-- 脚本区域 -->
+<script setup>
+    // 引入 API 函数
+    import { ref } from 'vue'
+    // 数据源
+    let account = ref('Abc')
+    // 方法
+    function chageAccount() {
+        account.value += '='
+    }
+</script>
+
+<!-- 视图区域（view） -->
+<template>
+    <!-- 使用数据源得 DOM -->
+    <input type="text" v-model="account">
+    <button @click="chageAccount">点我更改account</button>
+</template>
 ```
 
 
 
-* main.js 
-  * 入口文件
+### 3.5 响应式举例
+
+#### 3.5.1 选项式
+
+- 可用`data`选项来声明组件的响应式状态；该`data`选项的值应为返回一个对象的函数；
+
+- `data`函数返回对象的所有顶层属性都会被代理到组件实例（即方法和生命周期钩子中的 `this`）上
+
+- ```vue
+  <script>
+      export default {
+          // data 选项的值应该是一个函数返回的对象
+          data: () => ({
+              account: 'Abc',
+              student: {
+                  name: 'Jack',
+                  age: 30
+              }
+          }),
+          methods: {
+              changeAccount() {
+                  // 取出数据源可通过 this（当前组件得实例对象） 关键字获取
+                  this.account += '='
+              },
+              changeStudentAge() {
+                  this.student.age ++
+              }
+          }
+      }
+  </script>
+  
+  <template>
+    
+      <h1>账号：{{ account }}</h1>
+      <button @click="changeAccount">点我更改账号</button>
+  
+      <hr>
+  
+      <h1>学生：{{ student }}</h1>
+      <button @click="changeStudentAge">点我更改学生年龄</button>
+  
+  </template>
+  ```
+
+- 
+
+#### 3.5.2 组合式
+
+* 如果在组合式 API 中直接声明普通变量的数据源，他们并不具备响应式数据
+
+* ```vue
+  <script setup>
+  
+      // 普通的变量不具备响应式
+      let account = 123
+  
+      function changeAccount() {
+          account+= 1
+          console.log(account)
+      }
+  
+      // 普通类型的对象，不具备响应式
+      let emp = {
+          salary: 7000,
+          name: 'Annie'
+      }
+  
+      function changeEmpSalary() {
+          emp.salary += 100
+          console.log(emp)
+      }
+  
+  </script>
+  
+  <template>
+      <h1>账号：{{ account }}</h1>
+      <button @click="changeAccount">点我更改账号</button>
+  
+      <hr>
+      <h1>员工：{{ emp }}</h1>
+      <button @click="changeEmpSalary">点我更改薪资</button>
+  
+  </template>
+  ```
 
 
+
+### 3.6 组合式API的响应式数据
+
+* 如果在组合式 API 中直接声明普通变量的数据源，他们并不具备响应式数据
+
+#### 3.6.1 reactive()  函数
+
+* `reactive()`函数只对对象类型有效（对象、数组、`Map`、`Set`），对`string`、`number`和 `boolean`这样的原始类型无效
+
+* ```vue
+  <script setup>
+  
+      // 引入 reactive 函数
+      import { reactive } from 'vue'
+  
+      // reactive 对原始类型是无效（不具备响应式）
+      let account = reactive('Abc')
+  
+      function changeAccount() {
+          account += '='
+          console.log(account)
+      }
+  
+      // reactive 对象数据源（具有响应式）
+      let emp = reactive({
+          name: 'Jack',
+          salary: 7000
+      })
+  
+      function changeEmpSalary() {
+          emp.salary += 1
+          console.log(emp)
+      }
+  
+  </script>
+  
+  <template>
+  
+      <hr>
+      <h1>账号：{{ account }}</h1>
+      <button @click="changeAccount">点我更改账号</button>
+  
+      <hr>
+      <h1>员工：{{ emp }}</h1>
+      <button @click="changeEmpSalary">点我更改员工薪资</button>
+  
+  </template>
+  ```
+
+
+
+#### 3.6.2 `ref()` 函数
+
+- 使用`ref()`方法我们可以创建任何类型的响应式数据，获取时需要通过`.value`来进行获取
+
+- 当值为对象类型时，会用`reactive()`自动转换它的 `.value`
+
+- ```vue
+  <script setup>
+  
+      // 引入 ref 函数，来声明响应式对象
+      import { ref } from 'vue'
+      
+      // 使用 ref 函数来声明原始类型的数据源，具备响应式
+      let account = ref('Abc')
+  
+      // 更改账号，控制台查看最新值
+      function changeAccount() {
+          // 通过 ref 函数声明的响应式数据，需要使用 .value 来获取数据的值
+          account.value += '='
+          console.log(account)
+      }
+  
+      // 使用 ref 函数来声明对象类型的数据源：具备响应式
+      let emp = ref({
+          salary: 7000,
+          name: 'Jack'
+      })
+      
+      // 更改员工薪资，控制台查看最新值
+      function changeEmpSalary() {
+          // 通过 ref 函数声明的响应式数据，需要使用 .value 来获取数据的值
+          emp.value.salary += 100
+          console.log(emp)
+      }
+  </script>
+  
+  <template>
+    
+      <h1>账号：{{ account }}</h1>
+      <button @click="changeAccount">点我更改账号</button>
+  
+      <hr>
+  
+      <h1>员工：{{ emp }}</h1>
+      <button @click="changeEmpSalary">点我更改员工薪资</button>
+  
+  </template>
+  ```
+
+  
 
 # 4. 应用
 
@@ -144,7 +418,7 @@ const app = createApp(App)
 
 
 
-```
+```css
 App (root component)
 ├─ TodoList
 │  └─ TodoItem
@@ -155,33 +429,34 @@ App (root component)
    └─ TodoStatistics
 ```
 
-我们会在指南的后续章节中讨论如何定义和组合多个组件。在那之前，我们得先关注一个组件内到底发生了什么。
+后续会讨论如何定义和组合多个组件。在那之前，我们得先关注一个组件内到底发生了什么。
 
 ## 4.3 挂载应用
 
-应用实例必须在调用了 `.mount()` 方法后才会渲染出来。该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串：
+* 应用实例必须在调用了 `.mount()` 方法后才会渲染出来。
+  * 该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串：
 
-html
+* html
 
-```
+```html
 <div id="app"></div>
 ```
 
-js
+* js
 
-```
+```js
 app.mount('#app')
 ```
 
 应用根组件的内容将会被渲染在容器元素里面。容器元素自己将**不会**被视为应用的一部分。
 
-`.mount()` 方法应该始终在整个应用配置和资源注册完成后被调用。同时请注意，不同于其他资源注册方法，它的返回值是根组件实例而非应用实例。
+`.mount()` 方法应该始终在整个应用配置和资源注册完成后被调用。同时请注意，不同于其他资源注册方法，**它的返回值是根组件实例而非应用实例。**
 
 ### DOM 中的根组件模板
 
-当在未采用构建流程的情况下使用 Vue 时，我们可以在挂载容器中直接书写根组件模板：
+* 当在未采用构建流程的情况下使用 Vue 时，我们可以在挂载容器中直接书写根组件模板：
 
-html
+* html
 
 ```html
 <div id="app">
@@ -189,7 +464,7 @@ html
 </div>
 ```
 
-js
+* js
 
 ```js
 import { createApp } from 'vue'
@@ -209,9 +484,10 @@ app.mount('#app')
 
 ## 应用配置
 
-应用实例会暴露一个 `.config` 对象允许我们配置一些应用级的选项，例如定义一个应用级的错误处理器，用来捕获所有子组件上的错误：
+* 应用实例会暴露一个 `.config` 对象允许我们配置一些应用级的选项
+  * 例如定义一个应用级的错误处理器，用来捕获所有子组件上的错误：
 
-js
+* js
 
 ```js
 app.config.errorHandler = (err) => {
@@ -221,9 +497,9 @@ app.config.errorHandler = (err) => {
 
 应用实例还提供了一些方法来注册应用范围内可用的资源，例如注册一个组件：
 
-js
+* js
 
-```
+```js
 app.component('TodoDeleteButton', TodoDeleteButton)
 ```
 
