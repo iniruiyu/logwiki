@@ -1,54 +1,70 @@
 ---
-title: "标题在这个地方写"
+title: "HTML5笔记"
 meta_title: ""
-description: "posts 文章的介绍"
+description: "HTML5笔记"
 date: 2025-05-21T05:00:00Z
-image: "/images/gallery/02.jpg"
-categories: ["hugo", "markdown"]
+image: "/images/gallery/03.jpg"
+categories: ["HTML", "HTML5"]
 author: "ruiyu"
-tags: ["hugo", "markdown"]
+tags: ["HTML", "HTML"]
 draft: false
 
 ---
 
-## 这是第一篇文章
+HTML5 笔记
 
-以下是一些基本的 Hugo 文章 Markdown 文件的语法和结构要点：
+# 1. HTML5简介
 
-1. **Front Matter（前置数据）**: 在每个 Markdown 文件的顶部，你需要包含一段 Front Matter，这是元数据区域，用于定义文章的各种属性，如标题、日期、标签等。可以使用 YAML、TOML 或 JSON 格式来写。YAML 格式如下：
+HTML5 是下一代 HTML 标准。
 
-   ```yaml
-   ---
-   title: "我的文章标题"
-   date: 2025-05-21T20:55:00+08:00
-   draft: false
-   tags: ["标签1", "标签2"]
-   categories: ["分类1", "分类2"]
-   ---
-   ```
+HTML , HTML 4.01的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。
 
-2. **Markdown 内容**: Front Matter 后面的部分就是文章的正文部分，使用标准的 Markdown 语法来撰写。例如：
+HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了某些 HTML5 支持。
 
-   - 标题：使用 `#` 到 `######` 来表示不同级别的标题。
-   - 强调文字：使用 `*斜体*` 或 `_斜体_`；`**粗体**` 或 `__粗体__`。
-   - 链接：使用 `[链接文本](URL)` 的形式。
-   - 图片：使用 `![替代文字](图片路径)`。
-   - 列表：无序列表使用 `-`, `+`, 或 `*`；有序列表使用数字加句号，例如 `1.`。
-   - 引用：使用 `>` 符号开头的段落。
+HTML5 受包括Firefox（火狐浏览器），IE9及其更高版本，Chrome（谷歌浏览器），Safari，Opera等国外主流浏览器的支持；国内的傲游浏览器（Maxthon）， 360浏览器、搜狗浏览器、QQ浏览器、猎豹浏览器等同样具备支持HTML5的能力。
 
-3. **短代码（Shortcodes）**: Hugo 提供了强大的短代码功能，可以在 Markdown 中插入复杂的 HTML 结构或动态内容。例如：
+## 1.1 HTML5的改进
 
-   深色版本
+- 新元素
+- 新属性
+- 完全支持 CSS3
+- Video 和 Audio
+- 2D/3D 制图
+- 本地存储
+- 本地 SQL 数据
+- Web 应用
 
-   ```html
-   {{</* figure src="/images/picture.jpg" title="说明文字" */>}}
-   ```
+# 2. HTML5快速入门
 
-   这会在你的文章中添加一张带有标题的图片。
+## 2.1 HTML5 <!DOCTYPE>
 
-4. **其他特性**:
+* <!doctype> 声明必须位于 HTML5 文档中的第一行,使用非常简单:
 
-   - **草稿模式**：在 Front Matter 中设置 `draft: true` 可以将文章标记为草稿，这样在非 `--buildDrafts` 模式下不会被发布。
-   - **自定义输出**：可以通过修改主题或者自己添加模板来自定义文章的输出格式。
+```html
+<!DOCTYPE html>
+```
 
-通过这些基础元素，你可以创建丰富且具有吸引力的内容。记得根据你使用的 Hugo 主题调整某些设置，因为不同的主题可能对 Front Matter 和页面布局有不同的要求。
+
+
+## 2.2 最小的HTML5文档
+
+* 下面是一个简单的HTML5文档：
+
+```html
+<!DOCTYPE html>        
+<html>              
+	<head>          
+		<title></title>            
+	</head>           
+	<body>
+	</body>
+</html>
+```
+
+# 3.HTML5 新元素
+
+## 3.1 canvas 新元素
+
+| 标签   | 描述                                                         |
+| :----- | :----------------------------------------------------------- |
+| canvas | 标签定义图形，比如图表和其他图像。该标签基于 JavaScript 的绘图 API |

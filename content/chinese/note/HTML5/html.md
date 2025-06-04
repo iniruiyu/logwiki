@@ -1,7 +1,7 @@
 ---
-title: "html5笔记 基础标签"
+title: "html笔记 基础标签"
 meta_title: ""
-description: "html5笔记 基础标签"
+description: "html笔记 基础标签"
 date: 2025-05-21T05:00:00Z
 image: "/images/gallery/01.jpg"
 categories: ["html", "markdown"]
