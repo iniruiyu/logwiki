@@ -52,6 +52,12 @@ url = "/note/solidity"
 weight = 6
 
 [[main]]
+parent = "Notes"
+name = "UEFI"
+url = "/note/UEFI"
+weight = 6
+
+[[main]]
 name = "关于"
 url = "/about"
 weight = 7
