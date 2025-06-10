@@ -16,6 +16,8 @@
   {{ end }}
 {{ end }}
 
+{{/*  jq  */}}
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- main script -->
 {{ $scripts = $scripts | append (resources.Get "js/main.js") }}
